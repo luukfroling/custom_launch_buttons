@@ -16,3 +16,7 @@ custom_launch_buttons:
 ```
 where the label tells the text in the button and the url where the button leads to.
 
+### Todo version 2
+- add icons
+- add dropdown
+
