@@ -1,7 +1,0 @@
-pyproject.toml
-src/custom-launch-buttons/custom_lb.py
-src/custom_launch_buttons.egg-info/PKG-INFO
-src/custom_launch_buttons.egg-info/SOURCES.txt
-src/custom_launch_buttons.egg-info/dependency_links.txt
-src/custom_launch_buttons.egg-info/requires.txt
-src/custom_launch_buttons.egg-info/top_level.txt
