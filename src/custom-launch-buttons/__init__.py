@@ -1,5 +1,3 @@
-# TODO add icons 
-
 import os
 import ruamel.yaml
 import json
@@ -10,15 +8,19 @@ from sphinx.util.fileutil import copy_asset_file
 
 
 def copy_buttons(app: Sphinx, exc: None) -> None:
-    
+    print("[custom-launch-buttons] initialised, adding directories.")
+
+    # Define path to js file 
     current_dir = os.path.dirname(__file__)
-    js_file = os.path.join(current_dir, 'static', 'custom.js')
+    js_file = os.path.join(current_dir, 'static', 'launch_buttons.js')
 
     if app.builder.format == 'html' and not exc:
         
+        # Define paths to data files
         staticdir = os.path.join(app.builder.outdir, '_static')
         launch_buttons_yaml = os.path.join(app.builder.srcdir, '_launch_buttons.yml')
     
+        # Convert _launch_buttons.yaml to _launch_buttons.json so it can be read in javascript
         yaml_to_json(launch_buttons_yaml, os.path.join(staticdir, '_launch_buttons.json'))
 
         # Copy custom.js from static
