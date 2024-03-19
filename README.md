@@ -6,7 +6,14 @@ First version of custom launch buttons for jupyter-book. Install using
 pip install git+https://github.com/luukfroling/custom_launch_buttons_v1.git#egg=custom_launch_buttons
 ```
 
-to use, include a _launch_buttons.yml file along the _config.yml file. Buttons can be defined follows:
+to use in a jupyter-book, first include the extension in the _config.yml file
+```
+sphinx:
+  extra_extensions:
+    - custom-launch-buttons
+```
+then include a _launch_buttons.yml file along the _config.yml file. Buttons can be defined as follows:
+
 ```
 buttons:
   - type: dropdown
