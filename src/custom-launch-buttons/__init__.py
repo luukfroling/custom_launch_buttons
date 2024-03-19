@@ -37,6 +37,6 @@ def yaml_to_json(yaml_file: str, json_file: str) -> None:
             json.dump(data, jsonfile, indent=4)
 
 def setup(app: Sphinx) -> dict[str, str]:
-    app.add_js_file('custom.js')
+    app.add_js_file('launch_buttons.js')
     app.connect('build-finished', copy_buttons)
     return {'parallel_read_safe': True, 'parallel_write_safe': True}
