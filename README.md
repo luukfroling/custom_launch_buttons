@@ -6,17 +6,45 @@ First version of custom launch buttons for jupyter-book. Install using
 pip install git+https://github.com/luukfroling/custom_launch_buttons_v1.git#egg=custom_launch_buttons
 ```
 
-to use, include a _launch_buttons.yml file along the _config.yml file. Buttons can be defined according to their label and their href as follows:
+to use, include a _launch_buttons.yml file along the _config.yml file. Buttons can be defined follows:
 ```
-custom_launch_buttons:
-  - label: EN
-    url: https://www.google.com
-  - label: QM2
-    url: https://www.google.com
+buttons:
+  - type: dropdown
+    icon: <svg> </svg>
+    items:
+      - label: item 1
+        url: https://linkone.com
+      - label: item 2
+        url: https://linktwo.com
+  - type: dropdown
+    label: languages
+    items:
+      - label: Dutch
+        url: https://www.dutch.com
+      - label: English
+        url: https://www.english.com
+      - label: French
+        url: https://www.french.com
 ```
-where the label tells the text in the button and the url where the button leads to.
+where buttons is an array of launch buttons, each which can be identified using 'dropdown' or 'button'.
 
-### Todo version 2
-- add icons
-- add dropdown
+```
+buttons:
+  - type : dropdown
+
+  - type : button
+```
+
+The button/dropdown can be visualised using either an svg icon (https://icons.getbootstrap.com/#icons) or text. 
+
+```
+buttons:
+  - type : dropdown
+    label: Language
+  - type : button
+    label : <svg></svg> 
+```
+
+Then the same story goes for each of the items in the dropdown menu.
+
 
