@@ -1,6 +1,6 @@
 # custom launch buttons v1
 
-First version of custom launch buttons for jupyter-book. Install using
+First version of custom launch buttons for jupyter-book (https://jupyterbook.org/en/stable/interactive/launchbuttons.html). Install using
 
 ```
 pip install git+https://github.com/luukfroling/custom_launch_buttons_v1.git#egg=custom_launch_buttons
