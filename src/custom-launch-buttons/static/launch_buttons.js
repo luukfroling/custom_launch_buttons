@@ -98,12 +98,12 @@ let addButton = (button) => {
 
     // Set the button's text and class
     buttonElement.classList.add("btn", "btn-sm", "navbar-btn");
-
+    if (button.icon != undefined) buttonElement.innerHTML += button.icon;
+    if (button.label != undefined) buttonElement.innerHTML += " " + button.label;
+    
     // Add an event listener to the button
     buttonElement.addEventListener('click', function() {
         // Execute the specified action when the button is clicked
-        if (button.icon != undefined) buttonElement.innerHTML += button.icon;
-        if (button.label != undefined) buttonElement.innerHTML += " " + button.label;
         window.location.href = button.url;
     });
 
