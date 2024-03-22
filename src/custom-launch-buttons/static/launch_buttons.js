@@ -24,6 +24,7 @@ let addButtons = (buttons) => {
         element = button.type == "dropdown" ? addDropdown(button) : addButton(button);
         document.getElementsByClassName('article-header-buttons')[0].prepend(element)
     });
+    console.log("[custom-launch-buttons] end of setup")
 }
 
 /* Structure of dropdown: 
