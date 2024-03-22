@@ -9,7 +9,7 @@ setup(
     author="Luuk Fröling",
     description="A short description of your package",
     long_description=long_description,
-    long_description_content_type="text/markdown"
+    long_description_content_type="text/markdown",
     url="https://github.com/luukfroling/custom_launch_buttons_v1",
     packages=["custom-launch-buttons"],
     classifiers=[
