@@ -13,7 +13,11 @@ let currentPath = "undefined";
 
 // MAIN => hook into the DOM and add the buttons
 document.addEventListener('DOMContentLoaded', function() {
-    fetch('_static/_launch_buttons.json')
+    if (currentPath == "undefined") {
+        console.log("[custom-launch-buttons] path to static set as " + window.location.pathname.split('/')[1])
+        currentPath = window.location.pathname.split('/')[1];
+    }
+    fetch(currentPath + '_static/_launch_buttons.json')
     .then((response) => response.json())
     .then((response) => addButtons(response.buttons));
 
@@ -21,10 +25,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // distribute based on the type of the buttons
 let addButtons = (buttons) => {
-    if (currentPath == "undefined") {
-        console.log("[custom-launch-buttons] path to static set as " + window.location.pathname.split('/')[1])
-        currentPath = window.location.pathname.split('/')[1];
-    }
     // Append launch buttons to the page
     buttons.forEach(function(button) {
         element = button.type == "dropdown" ? addDropdown(button) : addButton(button);
