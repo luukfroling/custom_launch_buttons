@@ -9,6 +9,8 @@ display: block; /* Display the dropdown menu on hover */
 }
 `
 
+let currentPath = "undefined";
+
 // MAIN => hook into the DOM and add the buttons
 document.addEventListener('DOMContentLoaded', function() {
     fetch('_static/_launch_buttons.json')
@@ -19,6 +21,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // distribute based on the type of the buttons
 let addButtons = (buttons) => {
+    if (currentPath == "undefined") {
+        console.log("[custom-launch-buttons] path to static set as " + window.location.pathname.split('/')[1])
+        currentPath = window.location.pathname.split('/')[1];
+    }
     // Append launch buttons to the page
     buttons.forEach(function(button) {
         element = button.type == "dropdown" ? addDropdown(button) : addButton(button);
