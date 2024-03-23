@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log("[custom-launch-buttons] path to static set as " + staticPath)
         staticPath = window.location.pathname.split('/')[1];
     }
-    fetch(currentPath + '_static/_launch_buttons.json')
+    fetch(currentPath + '/_launch_buttons.json')
     .then((response) => response.json())
     .then((response) => addButtons(response.buttons));
 
