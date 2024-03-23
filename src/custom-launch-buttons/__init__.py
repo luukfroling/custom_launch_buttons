@@ -14,6 +14,7 @@ def copy_buttons(app: Sphinx, exc: None) -> None:
     current_dir = os.path.dirname(__file__)
     js_file = os.path.join(current_dir, 'static', 'launch_buttons.js')
 
+    print(app.builder.format)
     if app.builder.format == 'html' and not exc:
         
         # Define paths to data files
