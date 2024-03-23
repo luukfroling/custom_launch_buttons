@@ -24,6 +24,16 @@ def copy_buttons(app: Sphinx, exc: None) -> None:
         # Convert _launch_buttons.yaml to _launch_buttons.json so it can be read in javascript
         yaml_to_json(launch_buttons_yaml, os.path.join(staticdir, '_launch_buttons.json'))
 
+        # Read the JSON object from the file
+        with open('data.json', 'r') as json_file:
+            json_data = json.load(json_file)
+
+        # Write the JSON object to a JavaScript file
+        with open('data.js', 'w') as js_file2:
+            js_file2.write('var jsonData = ')
+            json.dump(json_data, js_file2)
+            js_file2.write(';')
+
         # Copy custom.js from static
         copy_asset_file(js_file, staticdir)
         # copy_asset_file(launch_buttons_json, staticdir)
