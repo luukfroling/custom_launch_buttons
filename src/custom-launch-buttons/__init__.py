@@ -25,11 +25,11 @@ def copy_buttons(app: Sphinx, exc: None) -> None:
         yaml_to_json(launch_buttons_yaml, os.path.join(staticdir, '_launch_buttons.json'))
 
         # Read the JSON object from the file
-        with open('data.json', 'r') as json_file:
+        with open(os.path.join(staticdir, '_launch_buttons.json'), 'r') as json_file:
             json_data = json.load(json_file)
 
         # Write the JSON object to a JavaScript file
-        with open('data.js', 'w') as js_file2:
+        with open(os.path.join(staticdir, '_launch_buttons_data.js'), 'w') as js_file2:
             js_file2.write('var jsonData = ')
             json.dump(json_data, js_file2)
             js_file2.write(';')
