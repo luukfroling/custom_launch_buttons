@@ -9,13 +9,15 @@ display: block; /* Display the dropdown menu on hover */
 }
 `
 
-let currentPath = "undefined";
+let staticPath = "undefined";
 
 // MAIN => hook into the DOM and add the buttons
 document.addEventListener('DOMContentLoaded', function() {
-    if (currentPath == "undefined") {
-        console.log("[custom-launch-buttons] path to static set as " + window.location.pathname.split('/')[1])
-        currentPath = window.location.pathname.split('/')[1];
+    console.log("in here")
+    if (staticPath == "undefined") {
+        staticPath = window.location.origin + window.location.pathname.split('/')[1] + "/_static"
+        console.log("[custom-launch-buttons] path to static set as " + staticPath)
+        staticPath = window.location.pathname.split('/')[1];
     }
     fetch(currentPath + '_static/_launch_buttons.json')
     .then((response) => response.json())
