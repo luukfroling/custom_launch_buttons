@@ -27,6 +27,7 @@ def copy_buttons(app: Sphinx, exc: None) -> None:
         copy_asset_file(js_file, staticdir)
         # copy_asset_file(launch_buttons_json, staticdir)
         copy_asset_file(launch_buttons_yaml, staticdir)
+        print("[custom-launch-buttons] copied files to _static directory.")
 
 # Function to convert yaml to json to prevent mixing of yaml and json for the user.
 def yaml_to_json(yaml_file: str, json_file: str) -> None:
