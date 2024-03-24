@@ -9,12 +9,8 @@ display: block; /* Display the dropdown menu on hover */
 }
 `
 
-
 // MAIN => hook into the DOM and add the buttons
-document.addEventListener('DOMContentLoaded', function() {
-    console.log(_button_data)
-    addButtons(_button_data);
-});
+document.addEventListener('DOMContentLoaded', () => addButtons(_button_data["buttons"]));
 
 // distribute based on the type of the buttons
 let addButtons = (buttons) => {
