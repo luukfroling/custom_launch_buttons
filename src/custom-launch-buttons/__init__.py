@@ -22,7 +22,7 @@ def copy_buttons(app: Sphinx, exc: None) -> None:
     # Convert _launch_buttons.yaml to _launch_buttons.json so it can be read in javascript
     yaml_to_json(launch_buttons_yaml, launch_buttons_json)
 
-    print("[custom-launch-buttons] yaml to json done.")	
+    print("[custom-launch-buttons] yaml converted to json")	
 
     if app.builder.format == 'html' and not exc:
 
@@ -33,13 +33,13 @@ def copy_buttons(app: Sphinx, exc: None) -> None:
         # Read the JSON object from the file
         with open(launch_buttons_json, 'r') as json_file:
             json_data = json.load(json_file)
-        print(json_data)
+
         # Create a variable assignment with the JSON data
         variable_assignment = 'let _button_data = ' + json.dumps(json_data) + ';\n\n'
-        print(variable_assignment)
+
         # Concatenate the variable assignment with the existing content
         new_content = variable_assignment + existing_content
-        print(new_content)
+
         # Write the modified content back to the JavaScript file
         with open(js_file_path, 'w') as js_file:
             js_file.write(new_content)
@@ -64,27 +64,3 @@ def setup(app: Sphinx) -> dict[str, str]:
     app.add_js_file('launch_buttons.js')
     app.connect('build-finished', copy_buttons)
     return {'parallel_read_safe': True, 'parallel_write_safe': True}
-
-# def option1():
-#     # Define paths to data files
-#     staticdir = os.path.join(app.builder.outdir, '_static')
-#     launch_buttons_yaml = os.path.join(app.builder.srcdir, '_launch_buttons.yml')
-
-#     # Convert _launch_buttons.yaml to _launch_buttons.json so it can be read in javascript
-#     yaml_to_json(launch_buttons_yaml, os.path.join(staticdir, '_launch_buttons.json'))
-
-#     # Read the JSON object from the file
-#     with open(os.path.join(staticdir, '_launch_buttons.json'), 'r') as json_file:
-#         json_data = json.load(json_file)
-
-#     # Write the JSON object to a JavaScript file
-#     with open(os.path.join(staticdir, '_launch_buttons_data.js'), 'w') as js_file2:
-#         js_file2.write('var jsonData = ')
-#         json.dump(json_data, js_file2)
-#         js_file2.write(';')
-
-#     # Copy custom.js from static
-#     copy_asset_file(js_file, staticdir)
-#     # copy_asset_file(launch_buttons_json, staticdir)
-#     copy_asset_file(launch_buttons_yaml, staticdir)
-#     print("[custom-launch-buttons] copied files to _static directory.")
