@@ -100,8 +100,10 @@ let addButton = (button) => {
     // Add an event listener to the button
     buttonElement.addEventListener('click', function() {
         // Execute the specified action when the button is clicked
+        console.log("[launch-button] URL clicked : " + button.link); 
         window.location.href = button.link;
     });
+    console.log("[launch-button] URL added : " + button.link); 
 
     // Add the button to the page
     return buttonElement
