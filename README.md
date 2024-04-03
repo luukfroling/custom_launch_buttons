@@ -3,7 +3,7 @@
 First version of custom launch buttons for jupyter-book (https://jupyterbook.org/en/stable/interactive/launchbuttons.html). Install using
 
 ```
-pip install git+https://github.com/TeachBooks/Sphinx-launch-buttons.git
+pip install custom-launch-buttons
 ```
 
 to use in a jupyter-book, first include the extension in the _config.yml file
