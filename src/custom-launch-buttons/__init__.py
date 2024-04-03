@@ -37,7 +37,6 @@ def copy_buttons(app: Sphinx, exc: None) -> None:
         # Create a variable assignment with the JSON data
         variable_assignment = 'let _button_data = ' + json.dumps(json_data) + ';\n\n'
 
-        # Concatenate the variable assignment with the existing content
         new_content = variable_assignment + existing_content
 
         # Write the modified content back to the JavaScript file
