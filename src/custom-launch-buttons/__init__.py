@@ -15,19 +15,19 @@ def copy_buttons(app: Sphinx, exc: None) -> None:
     staticdir = os.path.join(app.builder.outdir, '_static')
     
     # Define file paths
-    js_file_path = os.path.join(current_dir, 'static', 'launch_buttons.js')
+    package_file_path = os.path.join(current_dir, 'static', 'package_launch_buttons.js')
+    user_file_path = os.path.join(current_dir, 'static', 'user_launch_buttons.js')
     launch_buttons_yaml = os.path.join(app.builder.srcdir, '_launch_buttons.yml')
     launch_buttons_json = os.path.join(staticdir, '_launch_buttons.json')
     
     # Convert _launch_buttons.yaml to _launch_buttons.json so it can be read in javascript
     yaml_to_json(launch_buttons_yaml, launch_buttons_json)
-
     print("[custom-launch-buttons] yaml converted to json")	
 
     if app.builder.format == 'html' and not exc:
 
         # Read the existing content of the JavaScript file
-        with open(js_file_path, 'r') as js_file:
+        with open(package_file_path, 'r') as js_file:
             existing_content = js_file.read()
         
         # Read the JSON object from the file
@@ -40,11 +40,11 @@ def copy_buttons(app: Sphinx, exc: None) -> None:
         new_content = variable_assignment + existing_content
 
         # Write the modified content back to the JavaScript file
-        with open(js_file_path, 'w') as js_file:
+        with open(user_file_path, 'w+') as js_file:
             js_file.write(new_content)
-        
+
         # Copy all files from static to output directory
-        copy_asset_file(js_file_path, staticdir)
+        copy_asset_file(user_file_path, staticdir)
         copy_asset_file(launch_buttons_json, staticdir)
         copy_asset_file(launch_buttons_yaml, staticdir)
         
@@ -60,6 +60,6 @@ def yaml_to_json(yaml_file: str, json_file: str) -> None:
             json.dump(data, jsonfile, indent=4)
 
 def setup(app: Sphinx) -> dict[str, str]:
-    app.add_js_file('launch_buttons.js')
+    app.add_js_file('user_launch_buttons.js')
     app.connect('build-finished', copy_buttons)
     return {'parallel_read_safe': True, 'parallel_write_safe': True}
